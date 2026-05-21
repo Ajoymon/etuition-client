@@ -3,6 +3,8 @@ import { useForm } from 'react-hook-form';
 import useAuth from '../../../hooks/useAuth';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import { Link, useLocation, useNavigate } from 'react-router';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 const Register = () => {
   const navigat = useNavigate();
@@ -14,16 +16,39 @@ const Register = () => {
     formState: { errors },
   } = useForm();
   const { registerUser } = useAuth();
-  const handleRegistration = data => {
-    console.log('after registr', data);
-    registerUser(data.email, data.password)
-      .then(rusult => {
-        console.log(rusult.user);
-        navigat(location.state || '/');
-      })
-      .catch(error => {
-        console.log(error);
-      });
+  const axiosSecure = useAxiosSecure();
+
+  const handleRegistration = async data => {
+    try {
+      const rusult = await registerUser(data.email, data.password);
+      console.log(rusult.user);
+      const res = await axiosSecure.post('/users', data);
+
+      if (res.data.insertedId) {
+        Swal.fire({
+          title: 'Success!',
+          text: 'Data saved in MongoDB',
+          icon: 'success',
+        });
+      }
+      navigat(location.state || '/');
+    } catch (error) {
+      if (error.code === 'auth/email-already-in-use') {
+        Swal.fire({
+          title: 'Email Already Exists',
+          text: 'Please login with this email',
+          icon: 'warning',
+        });
+      } else {
+        Swal.fire({
+          title: 'Error!',
+          text: error.message,
+          icon: 'error',
+        });
+      }
+
+      console.log(error);
+    }
   };
   return (
     <div className="min-h-screen flex items-center">
