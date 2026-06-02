@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router';
 import logoImg from '../assets/pngegg.png';
-import { FaPlusCircle } from 'react-icons/fa';
+import { FaBook, FaPlusCircle } from 'react-icons/fa';
 
 const DashboardLayout = () => {
   return (
@@ -74,6 +74,18 @@ const DashboardLayout = () => {
                   <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                 </svg>
                 <span className="is-drawer-close:hidden">Homepage</span>
+              </Link>
+            </li>
+            {/* My Tuition */}
+            <li>
+              <Link
+                to="/dashboard/My-Tuition"
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="My Tuition "
+              >
+                <FaBook />
+
+                <span className="is-drawer-close:hidden">My Tuition </span>
               </Link>
             </li>
 

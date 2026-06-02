@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { FaInfoCircle } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
+import useAuth from '../../hooks/useAuth';
 
 const PostNewTuition = () => {
   const {
@@ -11,10 +12,18 @@ const PostNewTuition = () => {
     formState: { errors },
   } = useForm();
   const axiosSecure = useAxiosSecure();
+  const { user } = useAuth();
 
   const onSubmit = async data => {
+    const tuitionData = {
+      ...data,
+      email: user?.email,
+      userName: user?.displayName,
+      createdAt: new Date(),
+      status: 'Pending',
+    };
     try {
-      const res = await axiosSecure.post('/tuitionPosts', data);
+      const res = await axiosSecure.post('/tuitionPosts', tuitionData);
 
       if (res.data.insertedId) {
         Swal.fire({
@@ -211,6 +220,23 @@ const PostNewTuition = () => {
                   )}
                 </div>
               </div>
+            </div>
+            {/* Location */}
+            <div>
+              <label className="font-medium">Location</label>
+              <textarea
+                className="textarea textarea-bordered w-full mt-2"
+                placeholder="e.g. Sonadanga, Khulna"
+                {...register('location', {
+                  required: 'Location is required',
+                })}
+              ></textarea>
+
+              {errors.location && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.location.message}
+                </p>
+              )}
             </div>
 
             {/* Description */}

@@ -12,6 +12,7 @@ import PrivateRoute from './PrivateRoute';
 import DashboardLayout from '../layout/DashboardLayout';
 import DashboardHome from '../Dashboard/DashboardHome/DashboardHome';
 import PostNewTuition from '../Dashboard/PostNewTuition/PostNewTuition';
+import MyTuition from '../Dashboard/MyTuition/MyTuition';
 
 export const router = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ export const router = createBrowserRouter([
       {
         path: 'Post-New-Tuition',
         Component: PostNewTuition,
+      },
+      {
+        path: 'My-Tuition',
+        Component: MyTuition,
       },
     ],
   },
