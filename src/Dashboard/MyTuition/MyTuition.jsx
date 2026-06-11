@@ -9,15 +9,16 @@ import {
   FaUser,
 } from 'react-icons/fa';
 import useAuth from '../../hooks/useAuth';
-import useAxiosSecure from '../../hooks/useAxiosSecure';
+
 import { CiUser } from 'react-icons/ci';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import Swal from 'sweetalert2';
+import useAxios from '../../hooks/useAxios';
 
 const MyTuition = () => {
   const { user } = useAuth();
 
-  const axiosSecure = useAxiosSecure();
+  const axiosSecure = useAxios();
   const { data: tuitions = [], refetch } = useQuery({
     queryKey: ['myTuition', user?.email],
     queryFn: async () => {
@@ -114,9 +115,8 @@ const MyTuition = () => {
               </p>
             </div>
             <div className="flex items-center gap-3 mt-5">
-              <button className="btn btn-soft btn-info  flex-1">
-                <CiUser />
-                View Details
+              <button className="btn btn-soft btn-info  flex-1 text-black">
+                pay
               </button>
 
               <button

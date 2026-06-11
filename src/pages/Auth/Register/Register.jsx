@@ -3,8 +3,9 @@ import { useForm } from 'react-hook-form';
 import useAuth from '../../../hooks/useAuth';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import { Link, useLocation, useNavigate } from 'react-router';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
+
 import Swal from 'sweetalert2';
+import useAxiosSecur from '../../../hooks/useAxiosSecur';
 
 const Register = () => {
   const navigat = useNavigate();
@@ -16,14 +17,16 @@ const Register = () => {
     formState: { errors },
   } = useForm();
   const { registerUser } = useAuth();
-  const axiosSecure = useAxiosSecure();
+  const axiosSecure = useAxiosSecur();
 
   const handleRegistration = async data => {
     try {
       const rusult = await registerUser(data.email, data.password);
       console.log(rusult.user);
-      const res = await axiosSecure.post('/users', data);
+      console.log('Before MongoDB');
 
+      const res = await axiosSecure.post('/users', data);
+      console.log('After MongoDB');
       if (res.data.insertedId) {
         Swal.fire({
           title: 'Success!',
@@ -31,8 +34,11 @@ const Register = () => {
           icon: 'success',
         });
       }
-      navigat(location.state || '/');
+      console.log('Going Home');
+      navigat('/');
     } catch (error) {
+      console.log('FULL ERROR:', error);
+      console.log('ERROR RESPONSE:', error.response);
       if (error.code === 'auth/email-already-in-use') {
         Swal.fire({
           title: 'Email Already Exists',
@@ -50,6 +56,7 @@ const Register = () => {
       console.log(error);
     }
   };
+
   return (
     <div className="min-h-screen flex items-center">
       <div className="card bg-base-100 w-full max-w-sm mx-auto shadow-2xl">

@@ -2,8 +2,9 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { FaInfoCircle } from 'react-icons/fa';
 import Swal from 'sweetalert2';
-import useAxiosSecure from '../../hooks/useAxiosSecure';
+
 import useAuth from '../../hooks/useAuth';
+import useAxios from '../../hooks/useAxios';
 
 const PostNewTuition = () => {
   const {
@@ -11,7 +12,7 @@ const PostNewTuition = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const axiosSecure = useAxiosSecure();
+  const axiosSecure = useAxios();
   const { user } = useAuth();
 
   const onSubmit = async data => {
