@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router';
 import logoImg from '../assets/pngegg.png';
-import { FaBook, FaPlusCircle } from 'react-icons/fa';
+import { FaBook, FaClipboardList, FaPlusCircle } from 'react-icons/fa';
+import useRole from '../hooks/useRole';
 
 const DashboardLayout = () => {
+  const { role } = useRole();
+  console.log(role);
   return (
     <div className="drawer lg:drawer-open w-full max-w-7xl mx-auto bg-gray-100">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -101,6 +104,24 @@ const DashboardLayout = () => {
                 <span className="is-drawer-close:hidden">Post New Tuition</span>
               </Link>
             </li>
+            {/* only Admin Linck */}
+            {role === 'Admin' && (
+              <>
+                <li>
+                  <Link
+                    to="/dashboard/Manage-Tuitions"
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Manage Tuitions"
+                  >
+                    <FaClipboardList />
+
+                    <span className="is-drawer-close:hidden">
+                      Manage Tuitions
+                    </span>
+                  </Link>
+                </li>
+              </>
+            )}
 
             {/* Sating section */}
             <li>

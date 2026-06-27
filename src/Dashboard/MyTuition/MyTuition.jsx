@@ -13,19 +13,17 @@ import useAuth from '../../hooks/useAuth';
 import { CiUser } from 'react-icons/ci';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import Swal from 'sweetalert2';
-import useAxios from '../../hooks/useAxios';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const MyTuition = () => {
   const { user } = useAuth();
 
-  const axiosSecure = useAxios();
+  const axiosSecure = useAxiosSecure();
   const { data: tuitions = [], refetch } = useQuery({
     queryKey: ['myTuition', user?.email],
     queryFn: async () => {
       if (!user?.email) return [];
-      const res = await axiosSecure.get(
-        `/tuitionPosts?email=${user.email}&status=Pending`,
-      );
+      const res = await axiosSecure.get(`/tuitionPosts?email=${user.email}`);
       console.log(res.data);
       return res.data;
     },
@@ -72,7 +70,15 @@ const MyTuition = () => {
           >
             {/* Header */}
             <div className="flex justify-between items-center">
-              <span className="badge badge-success badge-outline p-4">
+              <span
+                className={`badge badge-outline p-4 ${
+                  tuition.status === 'Pending'
+                    ? 'badge-warning'
+                    : tuition.status === 'Approved'
+                      ? 'badge-success'
+                      : 'badge-error'
+                }`}
+              >
                 {tuition.status}
               </span>
               <p className="flex items-center gap-2 text-gray-500 bg-gray-200 p-2 rounded-2xl">
@@ -115,9 +121,15 @@ const MyTuition = () => {
               </p>
             </div>
             <div className="flex items-center gap-3 mt-5">
-              <button className="btn btn-soft btn-info  flex-1 text-black">
-                pay
-              </button>
+              {tuition.status?.toLowerCase() === 'approved' ? (
+                <button className="btn btn-soft btn-info flex-1 text-black">
+                  View Applications
+                </button>
+              ) : (
+                <button disabled className="btn btn-soft btn-disabled flex-1">
+                  {tuition.status}
+                </button>
+              )}
 
               <button
                 onClick={() => hendeleCardDelete(tuition._id)}

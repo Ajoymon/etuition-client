@@ -13,6 +13,8 @@ import DashboardLayout from '../layout/DashboardLayout';
 import DashboardHome from '../Dashboard/DashboardHome/DashboardHome';
 import PostNewTuition from '../Dashboard/PostNewTuition/PostNewTuition';
 import MyTuition from '../Dashboard/MyTuition/MyTuition';
+import ManageTuitions from '../Dashboard/ManageTuitions/ManageTuitions';
+import TuitionDetails from '../pages/TuitionDatails/TuitionDatails';
 
 export const router = createBrowserRouter([
   {
@@ -43,6 +45,10 @@ export const router = createBrowserRouter([
         path: 'contact',
         Component: Contact,
       },
+      {
+        path: '/tuitions/:id',
+        Component: TuitionDetails,
+      },
     ],
   },
   {
@@ -64,6 +70,10 @@ export const router = createBrowserRouter([
       {
         path: 'My-Tuition',
         Component: MyTuition,
+      },
+      {
+        path: 'Manage-Tuitions',
+        Component: ManageTuitions,
       },
     ],
   },

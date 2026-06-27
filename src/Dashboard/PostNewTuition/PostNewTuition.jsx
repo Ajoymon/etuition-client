@@ -4,7 +4,7 @@ import { FaInfoCircle } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 
 import useAuth from '../../hooks/useAuth';
-import useAxios from '../../hooks/useAxios';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const PostNewTuition = () => {
   const {
@@ -12,7 +12,7 @@ const PostNewTuition = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const axiosSecure = useAxios();
+  const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
 
   const onSubmit = async data => {

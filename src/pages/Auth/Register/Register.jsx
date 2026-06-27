@@ -2,10 +2,10 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../../hooks/useAuth';
 import SocialLogin from '../SocialLogin/SocialLogin';
-import { Link, useLocation, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import Swal from 'sweetalert2';
-import useAxiosSecur from '../../../hooks/useAxiosSecur';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const Register = () => {
   const navigat = useNavigate();
@@ -17,17 +17,18 @@ const Register = () => {
     formState: { errors },
   } = useForm();
   const { registerUser } = useAuth();
-  const axiosSecure = useAxiosSecur();
+  const axiosSecure = useAxiosSecure();
 
   const handleRegistration = async data => {
     try {
       const rusult = await registerUser(data.email, data.password);
       console.log(rusult.user);
-      console.log('Before MongoDB');
+      console.log('Firebase Done');
 
       const res = await axiosSecure.post('/users', data);
-      console.log('After MongoDB');
+
       if (res.data.insertedId) {
+        console.log('mongodb doun');
         Swal.fire({
           title: 'Success!',
           text: 'Data saved in MongoDB',
@@ -35,10 +36,9 @@ const Register = () => {
         });
       }
       console.log('Going Home');
-      navigat('/');
+      console.log(location.state);
+      navigat(location.state || '/');
     } catch (error) {
-      console.log('FULL ERROR:', error);
-      console.log('ERROR RESPONSE:', error.response);
       if (error.code === 'auth/email-already-in-use') {
         Swal.fire({
           title: 'Email Already Exists',
@@ -54,6 +54,9 @@ const Register = () => {
       }
 
       console.log(error);
+      console.log('Firebase Error:', error);
+      console.log('Error Code:', error.code);
+      console.log('Error Message:', error.message);
     }
   };
 

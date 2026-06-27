@@ -1,14 +1,13 @@
 import React from 'react';
 import useAuth from '../../../hooks/useAuth';
 import { useLocation, useNavigate } from 'react-router';
-
-import useAxiosSecur from '../../../hooks/useAxiosSecur';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const SocialLogin = () => {
   const { signInGoogle } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const axiosSecure = useAxiosSecur();
+  const axiosSecure = useAxiosSecure();
   const handlGoogleSignIn = async () => {
     try {
       const rusult = await signInGoogle();
