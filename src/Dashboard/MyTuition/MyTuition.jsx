@@ -23,7 +23,7 @@ const MyTuition = () => {
     queryKey: ['myTuition', user?.email],
     queryFn: async () => {
       if (!user?.email) return [];
-      const res = await axiosSecure.get(`/tuitionPosts?email=${user.email}`);
+      const res = await axiosSecure.get(`/myTuitions?email=${user.email}`);
       console.log(res.data);
       return res.data;
     },

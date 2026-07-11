@@ -14,6 +14,7 @@ const PostNewTuition = () => {
   } = useForm();
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
+  console.log(user);
 
   const onSubmit = async data => {
     const tuitionData = {

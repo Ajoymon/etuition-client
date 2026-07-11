@@ -18,7 +18,7 @@ const Tuitions = () => {
   const { data: tuitions = [] } = useQuery({
     queryKey: ['tuitionPosts'],
     queryFn: async () => {
-      const res = await axiosPublic.get('/tuitionPosts');
+      const res = await axiosPublic.get('/Tution/tuitionPosts');
       return Array.isArray(res.data)
         ? res.data
         : (res.data.result ?? res.data.data ?? []);

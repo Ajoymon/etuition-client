@@ -16,14 +16,13 @@ const Register = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { registerUser } = useAuth();
+  const { registerUser, updateUserProfile } = useAuth();
   const axiosSecure = useAxiosSecure();
 
   const handleRegistration = async data => {
     try {
       const rusult = await registerUser(data.email, data.password);
-      console.log(rusult.user);
-      console.log('Firebase Done');
+      await updateUserProfile(data.name);
 
       const res = await axiosSecure.post('/users', data);
 
@@ -35,8 +34,7 @@ const Register = () => {
           icon: 'success',
         });
       }
-      console.log('Going Home');
-      console.log(location.state);
+
       navigat(location.state || '/');
     } catch (error) {
       if (error.code === 'auth/email-already-in-use') {
@@ -52,11 +50,6 @@ const Register = () => {
           icon: 'error',
         });
       }
-
-      console.log(error);
-      console.log('Firebase Error:', error);
-      console.log('Error Code:', error.code);
-      console.log('Error Message:', error.message);
     }
   };
 

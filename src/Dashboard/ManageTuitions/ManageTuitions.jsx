@@ -8,7 +8,7 @@ const ManageTuitions = () => {
   const { data: tuitions = [], refetch } = useQuery({
     queryKey: ['allTuitions'],
     queryFn: async () => {
-      const res = await axiosSecure.get('/tuitionPosts'); // email ছাড়া - সব পোস্ট
+      const res = await axiosSecure.get('/admin/tuitionPosts'); // email ছাড়া - সব পোস্ট
       return res.data;
     },
   });

@@ -1,7 +1,12 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router';
 import logoImg from '../assets/pngegg.png';
-import { FaBook, FaClipboardList, FaPlusCircle } from 'react-icons/fa';
+import {
+  FaBook,
+  FaClipboardList,
+  FaPlusCircle,
+  FaUserCheck,
+} from 'react-icons/fa';
 import useRole from '../hooks/useRole';
 
 const DashboardLayout = () => {
@@ -79,33 +84,72 @@ const DashboardLayout = () => {
                 <span className="is-drawer-close:hidden">Homepage</span>
               </Link>
             </li>
-            {/* My Tuition */}
-            <li>
-              <Link
-                to="/dashboard/My-Tuition"
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="My Tuition "
-              >
-                <FaBook />
 
-                <span className="is-drawer-close:hidden">My Tuition </span>
-              </Link>
-            </li>
+            {/* only Student Linck */}
+            {role === 'student' && (
+              <>
+                {/* Post New Tuition section*/}
+                <li>
+                  <Link
+                    to="/dashboard/Post-New-Tuition"
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Post New Tuition"
+                  >
+                    <FaPlusCircle />
 
-            {/* Post New Tuition section*/}
-            <li>
-              <Link
-                to="/dashboard/Post-New-Tuition"
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Post New Tuition"
-              >
-                <FaPlusCircle />
+                    <span className="is-drawer-close:hidden">
+                      Post New Tuition
+                    </span>
+                  </Link>
+                </li>
+                {/* My Tuition */}
+                <li>
+                  <Link
+                    to="/dashboard/My-Tuition"
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="My Tuition "
+                  >
+                    <FaBook />
 
-                <span className="is-drawer-close:hidden">Post New Tuition</span>
-              </Link>
-            </li>
+                    <span className="is-drawer-close:hidden">My Tuition </span>
+                  </Link>
+                </li>
+                {/* Applied Tutors */}
+                <li>
+                  <Link
+                    to="/dashboard/Applied-Tutors"
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Applied Tutors"
+                  >
+                    <FaUserCheck></FaUserCheck>
+
+                    <span className="is-drawer-close:hidden">
+                      Applied Tutors
+                    </span>
+                  </Link>
+                </li>
+              </>
+            )}
+            {/* only Tutor Linck */}
+            {role === 'tutor' && (
+              <>
+                <li>
+                  <Link
+                    to="/dashboard/Manage-Tuitions"
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Manage Tuitions"
+                  >
+                    <FaClipboardList />
+
+                    <span className="is-drawer-close:hidden">
+                      Manage Tuitions
+                    </span>
+                  </Link>
+                </li>
+              </>
+            )}
             {/* only Admin Linck */}
-            {role === 'Admin' && (
+            {role === 'admin' && (
               <>
                 <li>
                   <Link
