@@ -4,6 +4,7 @@ import logoImg from '../assets/pngegg.png';
 import {
   FaBook,
   FaClipboardList,
+  FaFileAlt,
   FaPlusCircle,
   FaUserCheck,
 } from 'react-icons/fa';
@@ -133,16 +134,17 @@ const DashboardLayout = () => {
             {/* only Tutor Linck */}
             {role === 'tutor' && (
               <>
+                {/* My Applications */}
                 <li>
                   <Link
-                    to="/dashboard/Manage-Tuitions"
+                    to="/dashboard/My-Applications"
                     className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                    data-tip="Manage Tuitions"
+                    data-tip="My Applications"
                   >
-                    <FaClipboardList />
+                    <FaFileAlt />
 
                     <span className="is-drawer-close:hidden">
-                      Manage Tuitions
+                      My Applications
                     </span>
                   </Link>
                 </li>

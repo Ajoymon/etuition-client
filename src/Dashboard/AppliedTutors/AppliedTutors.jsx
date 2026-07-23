@@ -16,6 +16,17 @@ const AppliedTutors = () => {
       return res.data;
     },
   });
+  // my pmant Handeling
+  const handleAccept = async app => {
+    const paymentinfo = {
+      amount: app.expectedSalary,
+      applicationId: app._id,
+      tutorName: app.tutorName,
+      studentEmail: user?.email,
+    };
+    const res = await axiosSecure.post('/create-checkout-session', paymentinfo);
+    window.location.replace(res.data.url);
+  };
   const updateApplictoneStatus = (app, status) => {
     const updateInfo = { status: status, email: app.email };
     axiosSecure.patch(`/update/Apply/${app._id}`, updateInfo).then(res => {
@@ -109,7 +120,8 @@ const AppliedTutors = () => {
                     <div className="flex gap-2">
                       {/* my Approvt Buttone */}
                       <button
-                        onClick={() => handleApproval(app)}
+                        onClick={() => handleAccept(app)}
+                        disabled={app.status === 'Approved'}
                         className="btn btn-sm btn-success"
                       >
                         Accept
