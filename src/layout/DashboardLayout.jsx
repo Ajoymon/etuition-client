@@ -3,8 +3,10 @@ import { Link, Outlet } from 'react-router';
 import logoImg from '../assets/pngegg.png';
 import {
   FaBook,
+  FaChartLine,
   FaClipboardList,
   FaFileAlt,
+  FaMoneyCheckAlt,
   FaPlusCircle,
   FaUserCheck,
 } from 'react-icons/fa';
@@ -129,6 +131,21 @@ const DashboardLayout = () => {
                     </span>
                   </Link>
                 </li>
+
+                {/* Payment History */}
+                <li>
+                  <Link
+                    to="/dashboard/Payment-History"
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Payment History"
+                  >
+                    <FaMoneyCheckAlt />
+
+                    <span className="is-drawer-close:hidden">
+                      Payment History
+                    </span>
+                  </Link>
+                </li>
               </>
             )}
             {/* only Tutor Linck */}
@@ -145,6 +162,20 @@ const DashboardLayout = () => {
 
                     <span className="is-drawer-close:hidden">
                       My Applications
+                    </span>
+                  </Link>
+                </li>
+                {/* Revenue History */}
+                <li>
+                  <Link
+                    to="/dashboard/Revenue-History"
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Revenue History"
+                  >
+                    <FaChartLine />
+
+                    <span className="is-drawer-close:hidden">
+                      Revenue History
                     </span>
                   </Link>
                 </li>

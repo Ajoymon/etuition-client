@@ -23,6 +23,7 @@ const AppliedTutors = () => {
       applicationId: app._id,
       tutorName: app.tutorName,
       studentEmail: user?.email,
+      studentName: user?.displayName,
     };
     const res = await axiosSecure.post('/create-checkout-session', paymentinfo);
     window.location.replace(res.data.url);

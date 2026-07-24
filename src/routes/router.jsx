@@ -19,6 +19,8 @@ import AppliedTutors from '../Dashboard/AppliedTutors/AppliedTutors';
 import MyApplications from '../Dashboard/MyApplications/MyApplications';
 import PaymentSuccess from '../Dashboard/Payment/PaymentSuccess';
 import PaymentCancelled from '../Dashboard/Payment/PaymentCancelled';
+import PaymentHistory from '../Dashboard/PaymentHistory/PaymentHistory';
+import RevenueHistory from '../Dashboard/RevenueHistory/RevenueHistory';
 
 export const router = createBrowserRouter([
   {
@@ -94,6 +96,14 @@ export const router = createBrowserRouter([
       {
         path: 'payment-cancelled',
         Component: PaymentCancelled,
+      },
+      {
+        path: 'Payment-History',
+        Component: PaymentHistory,
+      },
+      {
+        path: 'Revenue-History',
+        Component: RevenueHistory,
       },
     ],
   },
