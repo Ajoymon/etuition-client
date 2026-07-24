@@ -3,6 +3,7 @@ import { Link, Outlet } from 'react-router';
 import logoImg from '../assets/pngegg.png';
 import {
   FaBook,
+  FaChartBar,
   FaChartLine,
   FaClipboardList,
   FaFileAlt,
@@ -194,6 +195,20 @@ const DashboardLayout = () => {
 
                     <span className="is-drawer-close:hidden">
                       Manage Tuitions
+                    </span>
+                  </Link>
+                </li>
+                {/* Payment Reports */}
+                <li>
+                  <Link
+                    to="/dashboard/Payment-Reports"
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Payment Reports"
+                  >
+                    <FaChartBar />
+
+                    <span className="is-drawer-close:hidden">
+                      Payment Reports
                     </span>
                   </Link>
                 </li>

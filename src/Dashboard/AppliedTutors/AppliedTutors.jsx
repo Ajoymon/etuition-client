@@ -119,18 +119,30 @@ const AppliedTutors = () => {
                   </td>
                   <td>
                     <div className="flex gap-2">
-                      {/* my Approvt Buttone */}
+                      {/* Accept button */}
                       <button
                         onClick={() => handleAccept(app)}
                         disabled={app.status === 'Approved'}
-                        className="btn btn-sm btn-success"
+                        className={`btn btn-sm ${
+                          app.status === 'Approved'
+                            ? 'btn-disabled'
+                            : 'btn-success'
+                        }`}
                       >
-                        Accept
+                        {app.status === 'Approved' ? 'Hired ✓' : 'Accept'}
                       </button>
-                      {/* My Regict Buttone */}
+
+                      {/* Reject button */}
                       <button
                         onClick={() => handleRejiction(app)}
-                        className="btn btn-sm btn-error"
+                        disabled={
+                          app.status === 'Approved' || app.status === 'rejected'
+                        }
+                        className={`btn btn-sm ${
+                          app.status === 'Approved' || app.status === 'rejected'
+                            ? 'btn-disabled'
+                            : 'btn-error'
+                        }`}
                       >
                         Reject
                       </button>
