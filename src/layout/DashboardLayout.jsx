@@ -10,6 +10,7 @@ import {
   FaMoneyCheckAlt,
   FaPlusCircle,
   FaUserCheck,
+  FaUsersCog,
 } from 'react-icons/fa';
 import useRole from '../hooks/useRole';
 
@@ -209,6 +210,20 @@ const DashboardLayout = () => {
 
                     <span className="is-drawer-close:hidden">
                       Payment Reports
+                    </span>
+                  </Link>
+                </li>
+                {/* User Management */}
+                <li>
+                  <Link
+                    to="/dashboard/User-Management"
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="User Management"
+                  >
+                    <FaUsersCog />
+
+                    <span className="is-drawer-close:hidden">
+                      User Management
                     </span>
                   </Link>
                 </li>

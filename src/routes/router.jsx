@@ -22,6 +22,7 @@ import PaymentCancelled from '../Dashboard/Payment/PaymentCancelled';
 import PaymentHistory from '../Dashboard/PaymentHistory/PaymentHistory';
 import RevenueHistory from '../Dashboard/RevenueHistory/RevenueHistory';
 import PaymentReports from '../Dashboard/PaymentReports/PaymentReports';
+import UserManagement from '../Dashboard/UserManagement/UserManagement';
 
 export const router = createBrowserRouter([
   {
@@ -91,7 +92,11 @@ export const router = createBrowserRouter([
         Component: MyApplications,
       },
       {
-        path: 'Payment-Success',
+        path: 'User-Management',
+        Component: UserManagement,
+      },
+      {
+        path: 'payment-success',
         Component: PaymentSuccess,
       },
       {
