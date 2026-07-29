@@ -23,6 +23,7 @@ import PaymentHistory from '../Dashboard/PaymentHistory/PaymentHistory';
 import RevenueHistory from '../Dashboard/RevenueHistory/RevenueHistory';
 import PaymentReports from '../Dashboard/PaymentReports/PaymentReports';
 import UserManagement from '../Dashboard/UserManagement/UserManagement';
+import NotFound from '../pages/NotFound/NotFound';
 
 export const router = createBrowserRouter([
   {
@@ -56,6 +57,11 @@ export const router = createBrowserRouter([
       {
         path: '/tuitions/:id',
         Component: TuitionDetails,
+      },
+      // 404 Page
+      {
+        path: '*',
+        Component: NotFound,
       },
     ],
   },
@@ -114,6 +120,11 @@ export const router = createBrowserRouter([
       {
         path: 'Payment-Reports',
         Component: PaymentReports,
+      },
+      // 404 Page
+      {
+        path: '*',
+        Component: NotFound,
       },
     ],
   },
