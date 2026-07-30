@@ -24,6 +24,8 @@ import RevenueHistory from '../Dashboard/RevenueHistory/RevenueHistory';
 import PaymentReports from '../Dashboard/PaymentReports/PaymentReports';
 import UserManagement from '../Dashboard/UserManagement/UserManagement';
 import NotFound from '../pages/NotFound/NotFound';
+import ProfileSettings from '../Dashboard/ProfileSettings/ProfileSettings';
+import OngoinTuitions from '../Dashboard/OngoingTuitions/OngoinTuitions';
 
 export const router = createBrowserRouter([
   {
@@ -120,6 +122,14 @@ export const router = createBrowserRouter([
       {
         path: 'Payment-Reports',
         Component: PaymentReports,
+      },
+      {
+        path: 'Profile-Setting',
+        Component: ProfileSettings,
+      },
+      {
+        path: 'Ongoing-Tuitions',
+        Component: OngoinTuitions,
       },
       // 404 Page
       {

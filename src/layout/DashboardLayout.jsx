@@ -3,6 +3,7 @@ import { Link, Outlet } from 'react-router';
 import logoImg from '../assets/pngegg.png';
 import {
   FaBook,
+  FaChalkboardTeacher,
   FaChartBar,
   FaChartLine,
   FaClipboardList,
@@ -13,6 +14,7 @@ import {
   FaUsersCog,
 } from 'react-icons/fa';
 import useRole from '../hooks/useRole';
+import { CiSettings } from 'react-icons/ci';
 
 const DashboardLayout = () => {
   const { role } = useRole();
@@ -181,6 +183,20 @@ const DashboardLayout = () => {
                     </span>
                   </Link>
                 </li>
+                {/* Ongoing Tuitions */}
+                <li>
+                  <Link
+                    to="/dashboard/Ongoing-Tuitions"
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Ongoing Tuitions"
+                  >
+                    <FaChalkboardTeacher />
+
+                    <span className="is-drawer-close:hidden">
+                      Ongoing Tuitions
+                    </span>
+                  </Link>
+                </li>
               </>
             )}
             {/* only Admin Linck */}
@@ -232,28 +248,15 @@ const DashboardLayout = () => {
 
             {/* Sating section */}
             <li>
-              <button
+              <Link
+                to="/dashboard/Profile-Setting"
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Settings"
+                data-tip="Profile Setting"
               >
-                {/* Settings icon */}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  strokeLinejoin="round"
-                  strokeLinecap="round"
-                  strokeWidth="2"
-                  fill="none"
-                  stroke="currentColor"
-                  className="my-1.5 inline-block size-4"
-                >
-                  <path d="M20 7h-9"></path>
-                  <path d="M14 17H5"></path>
-                  <circle cx="17" cy="17" r="3"></circle>
-                  <circle cx="7" cy="7" r="3"></circle>
-                </svg>
-                <span className="is-drawer-close:hidden">Settings</span>
-              </button>
+                <CiSettings />
+
+                <span className="is-drawer-close:hidden">Profile Setting</span>
+              </Link>
             </li>
           </ul>
         </div>
