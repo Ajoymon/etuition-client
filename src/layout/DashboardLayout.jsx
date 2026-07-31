@@ -70,7 +70,7 @@ const DashboardLayout = () => {
             {/* Home section */}
             <li>
               <Link
-                to={'/dashboard'}
+                to={'/dashboard/'}
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
                 data-tip="Homepage"
               >
