@@ -4,7 +4,7 @@ import useAuth from './useAuth';
 import { useNavigate } from 'react-router';
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:3000/',
+  baseURL: 'https://etuitionbd-server-smoky.vercel.app/',
 });
 
 const useAxiosSecur = () => {
@@ -12,10 +12,16 @@ const useAxiosSecur = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const reqInterceptor = axiosInstance.interceptors.request.use(config => {
-      config.headers.Authorization = `Bearer ${user?.accessToken}`;
-      return config;
-    });
+    const reqInterceptor = axiosInstance.interceptors.request.use(
+      async config => {
+        if (user) {
+          const token = await user.getIdToken();
+
+          config.headers.Authorization = `Bearer ${token}`;
+        }
+        return config;
+      },
+    );
 
     const resInterceptor = axiosInstance.interceptors.response.use(
       response => response,
@@ -39,4 +45,4 @@ const useAxiosSecur = () => {
   return axiosInstance;
 };
 
-export default useAxiosSecur;
+export default useAxiosSecur; // ✅ এটা যোগ করুন

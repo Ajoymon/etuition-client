@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import useAxios from '../../hooks/useAxios';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import {
@@ -33,6 +33,7 @@ const TuitionDetails = () => {
   const ApplyModalRef = useRef();
   const { user } = useAuth();
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -95,6 +96,7 @@ const TuitionDetails = () => {
         ApplyModalRef.current.close();
         reset();
         queryClient.invalidateQueries(['checkApplication', id, user?.email]);
+        navigate('/dashboard/My-Applications');
       }
     } catch (error) {
       console.error(error);

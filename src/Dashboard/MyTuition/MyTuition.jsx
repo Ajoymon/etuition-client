@@ -24,7 +24,7 @@ const MyTuition = () => {
     queryFn: async () => {
       if (!user?.email) return [];
       const res = await axiosSecure.get(`/myTuitions?email=${user.email}`);
-      console.log(res.data);
+
       return res.data;
     },
   });

@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 
 import useAuth from '../../hooks/useAuth';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
+import { useNavigate } from 'react-router';
 
 const PostNewTuition = () => {
   const {
@@ -14,7 +15,8 @@ const PostNewTuition = () => {
   } = useForm();
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
-  console.log(user);
+
+  const navigate = useNavigate();
 
   const onSubmit = async data => {
     const tuitionData = {
@@ -33,6 +35,7 @@ const PostNewTuition = () => {
           text: 'Tuition posted successfully',
           icon: 'success',
         });
+        navigate('/dashboard/my-tuition');
       }
     } catch (error) {
       Swal.fire({

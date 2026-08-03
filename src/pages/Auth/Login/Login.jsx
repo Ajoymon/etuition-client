@@ -16,11 +16,8 @@ const Login = () => {
   } = useForm();
   const { signInUser } = useAuth();
   const handelLogin = data => {
-    // console.log(data);
     signInUser(data.email, data.password)
       .then(result => {
-        console.log('LOGIN USER:', result.user);
-        console.log('FROM STATE:', location.state);
         navgiat(location.state || '/');
       })
       .catch(error => {

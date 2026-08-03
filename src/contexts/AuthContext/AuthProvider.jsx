@@ -47,7 +47,6 @@ const AuthProvider = ({ children }) => {
   // aita korla amder firebase user login asa na ke logo out asa amder web sit refish dela cola jaba na
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, currentUser => {
-      console.log(currentUser);
       setUser(currentUser);
       setLoding(false);
     });

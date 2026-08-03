@@ -8,24 +8,25 @@ manage the entire platform.
 
 ## 🌐 Live Links
 
-- **Frontend:**
-  [https://your-frontend-url.netlify.app](https://your-frontend-url.netlify.app)
+https://etuitiondb.web.app/
+
+- **Frontend:** [https://etuitiondb.web.app/](https://etuitiondb.web.app/)
 - **Backend:**
-  [https://your-backend-url.vercel.app](https://your-backend-url.vercel.app)
+  [https://etuitionbd-server-smoky.vercel.app/](https://etuitionbd-server-smoky.vercel.app/)
 - **Client Repo:**
-  [https://github.com/your-username/etuitionbd-client](https://github.com/your-username/etuitionbd-client)
+  [https://github.com/Ajoymon/etuition-client](https://github.com/Ajoymon/etuition-client)
 - **Server Repo:**
-  [https://github.com/your-username/etuitionbd-server](https://github.com/your-username/etuitionbd-server)
+  [https://github.com/Ajoymon/etuitionbd-server](https://github.com/Ajoymon/etuitionbd-server)
 
 ---
 
 ## 👤 Test Credentials
 
-| Role    | Email                  | Password    |
-| ------- | ---------------------- | ----------- |
-| Admin   | admin@etuitionbd.com   | Admin@123   |
-| Student | student@etuitionbd.com | Student@123 |
-| Tutor   | tutor@etuitionbd.com   | Tutor@123   |
+| Role    | Email                 | Password    |
+| ------- | --------------------- | ----------- |
+| Admin   | apu14757@gmail.com    | Apu@349     |
+| Student | prokash2472@email.com | Prokash@349 |
+| Tutor   | amit5685@gmail.com    | Amit@349    |
 
 ---
 
@@ -121,17 +122,3 @@ manage the entire platform.
 ## 📁 Project Structure
 
 ### Frontend
-
-src/ ├── assets/ ├── components/ │ └── shared/ ├── hooks/ │ ├── useAuth.js │ ├──
-useAxios.js │ ├── useAxiosSecure.js │ └── useRole.js ├── layouts/ │ ├──
-MainLayout.jsx │ └── DashboardLayout.jsx ├── pages/ │ ├── Home/ │ │ ├── Banner/
-│ │ ├── LatestTuitions/ │ │ ├── LatestTutors/ │ │ ├── HowItWorks/ │ │ ├──
-WhyChooseUs/ │ │ └── Reviews/ │ ├── Tuitions/ │ ├── TuitionDetails/ │ ├──
-Tutors/ │ ├── About/ │ ├── Contact/ │ ├── Auth/ │ │ ├── Login/ │ │ └── Register/
-│ ├── Dashboard/ │ │ ├── Admin/ │ │ │ ├── AdminDashboardHome/ │ │ │ ├──
-ManageTuitions/ │ │ │ ├── UserManagement/ │ │ │ └── AdminPayments/ │ │ ├──
-Student/ │ │ │ ├── StudentDashboardHome/ │ │ │ ├── MyTuitions/ │ │ │ ├──
-AppliedTutors/ │ │ │ └── StudentPayments/ │ │ └── Tutor/ │ │ ├──
-TutorDashboardHome/ │ │ ├── MyApplications/ │ │ ├── OngoingTuitions/ │ │ └──
-RevenueHistory/ │ ├── PaymentSuccess/ │ ├── PaymentCancelled/ │ └── NotFound/
-├── providers/ │ └── AuthProvider.jsx └── router/ └── router.jsx

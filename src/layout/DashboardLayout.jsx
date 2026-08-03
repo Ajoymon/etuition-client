@@ -18,7 +18,7 @@ import { CiSettings } from 'react-icons/ci';
 
 const DashboardLayout = () => {
   const { role } = useRole();
-  console.log(role);
+
   return (
     <div className="drawer lg:drawer-open w-full max-w-7xl mx-auto bg-gray-100">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />

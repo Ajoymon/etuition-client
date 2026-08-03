@@ -1,24 +1,36 @@
 import React from 'react';
 import useAuth from '../../../hooks/useAuth';
 import { useLocation, useNavigate } from 'react-router';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import useAxiosSecur from '../../../hooks/useAxiosSecure';
 
 const SocialLogin = () => {
   const { signInGoogle } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const axiosSecure = useAxiosSecure();
+  const axiosSecure = useAxiosSecur();
   const handlGoogleSignIn = async () => {
     try {
-      const rusult = await signInGoogle();
-      console.log(rusult.user);
+      // Google Login
+      const result = await signInGoogle();
+
+      console.log('Google User:', result.user);
+
+      const googleUser = result.user;
+      const token = await googleUser.getIdToken();
+
       const userInfo = {
-        name: rusult.user.displayName,
-        email: rusult.user.email,
-        Photo: rusult.user.photoURL,
+        name: result.user.displayName,
+        email: result.user.email,
+        Photo: result.user.photoURL,
         role: 'student',
       };
-      await axiosSecure.post('/users', userInfo);
+
+      // Backend request
+      const response = await axiosSecure.post('/users', userInfo, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      console.log('Backend Response:', response.data);
 
       navigate(location.state || '/');
     } catch (error) {
